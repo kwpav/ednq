@@ -1,0 +1,15 @@
+* ednq
+Transform JSON with Clojure from the command line!
+
+=ednq= is a [[https://github.com/babashka/babashka][babashka]] script that allows you to process JSON with arbitrary Clojure code. Simply pass in a function and some JSON.
+
+Examples:
+#+begin_src sh
+  $ ./ednq.clj ':hello' "{\"hello\": \"world\"}"
+  "world"
+#+end_src
+
+#+begin_src sh
+  $ ./ednq.clj 'keys' "{\"foo\": \"boz\", \"bar\": \"baz\"}"
+  [ "foo", "bar" ]
+#+end_src
