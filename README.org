@@ -1,15 +1,24 @@
 * ednq
-Transform JSON with Clojure from the command line!
+Transform json or edn data with Clojure from the command line!
 
-=ednq= is a [[https://github.com/babashka/babashka][babashka]] script that allows you to process JSON with arbitrary Clojure code. Simply pass in a function and some JSON.
+=ednq= is a [[https://github.com/babashka/babashka][babashka]] script that allows you to process data with arbitrary Clojure code. Simply pass in a function and some valid data!
+** Usage
+#+begin_src sh
+Usage: ednq <fn> <data> <options>
 
-Examples:
+Options:
+-i, --in=TYPE   set the input data type
+-o, --out=TYPE  set the output data type
+
+TYPE can be: json(default), edn
+#+end_src
+** Examples
 #+begin_src sh
   $ ./ednq.clj ':hello' "{\"hello\": \"world\"}"
   "world"
 #+end_src
 
 #+begin_src sh
-  $ ./ednq.clj 'keys' "{\"foo\": \"boz\", \"bar\": \"baz\"}"
-  [ "foo", "bar" ]
+  $ ./ednq.clj 'keys' "{\"foo\": \"boz\", \"bar\": \"baz\"}" -i json -o edn
+  (:foo :bar)
 #+end_src
